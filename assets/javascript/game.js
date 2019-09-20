@@ -20,27 +20,32 @@ var golfQuestions = [{
     choice: [Boolean],
     validAnswer: "false"
 }]
-var i;
+
 for(i=0; i<golfQuestions.length; i++){
-   console.log(golfQuestions[i].validAnswer);
+   var result1 = golfQuestions[0].validAnswer
+   var result2 = golfQuestions[1].validAnswer
 }
 var userPick = false;
 var losses = 0;
 var wins = 0;
-var i;
+// var results = golfQuestions[i]
 $("button").click(function() {
 userPick = $(this).attr("id");
 console.log(userPick)
-golfQuestions[i].validAnswer;
 
-if(userPick !== golfQuestions[i].validAnswer) {
+
+if(userPick !== result1) {
 
     losses++
     console.log("losses " + losses)
 }
-else if(userPick == golfQuestions[i].validAnswer) {
+else if(userPick == result1) {
     wins++;
     console.log("wins: " + wins);
+}
+if(userPick !== result2) {
+    losses++
+    console.log("losses " + losses)
 }
 })
 
