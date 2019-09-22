@@ -1,5 +1,5 @@
 var golfQuestions = [{
-    question: "The player that has the lowest score on a hole tee's off when on the next hole?",
+    question: "The player that has the lowest score on a hole, tee's off when, on the next hole?",
     choice: ["first", "last", "second"],
     validAnswer: "first"
 }, {
