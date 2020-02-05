@@ -4,6 +4,7 @@ var currentQuestion = 0;
 var score = 0;
 var losses = 0;
 var timer;
+var incorrectAnswers = [];
 
 function nextQuestion() {
 
@@ -37,7 +38,7 @@ function countDown() {
 }
   
 function loadQuestion() {
-    counter = 10;
+    counter = 20;
     timer = setInterval(countDown, 1000);
 
     var question = golfQuestions[currentQuestion].question;
@@ -56,6 +57,11 @@ function loadChoices(choices) {
     return result;
 }}
 
+function incorrectAnswer(answer) {
+    incorrectAnswers.push(" " + answer)
+    console.log(incorrectAnswers);
+}
+
 $(document).on("click", ".choice", function() {
     clearInterval(timer);
     var selectedAnswer = $(this).attr("data-answer");
@@ -69,7 +75,7 @@ $(document).on("click", ".choice", function() {
         console.log("incorrect")
         losses++;
         nextQuestion();
-
+        incorrectAnswer(selectedAnswer)
     }
     console.log(selectedAnswer)
     
@@ -80,6 +86,7 @@ function displayResult() {
     <p>You got ${score} question(s) right</p>
     <p>You missed ${losses} question(s) </p>
     <p>Total questions ${golfQuestions.length} question(s)</p>
+    <p> Incorrect answers:  ${incorrectAnswers}</p>
     <button class="btn btn-primary" id="reset">Reset Game</button
     `;
 
@@ -87,7 +94,7 @@ function displayResult() {
 }
 
 $(document).on("click", "#reset", function() {
- counter = 10;
+ counter = 20;
  currentQuestion = 0;
  score = 0;
  losses = 0;
